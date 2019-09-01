@@ -51,6 +51,7 @@ private:
 
   /* Error handlers */
   void (*mErrorHandler)(CMRIParserError, uint16_t);
+
   void wrongCharError();
   void wrongAddressError();
   void wrongTypeError();

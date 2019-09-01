@@ -67,6 +67,16 @@ private:
   void feed(const uint8_t inChar);
   void endOfFrame();
 
+public:
+  typedef enum {
+    PROTOCOL_ERROR,
+    INIT_ERROR,
+    WRONG_TYPE,
+  } CMRIBoardError;
+
+  /* Error handlers */
+  void (*mErrorHandler)(CMRIBoardError, CMRIBoard *);
+
   void protocolError();
   void initError();
   void wrongTypeError();

@@ -187,3 +187,27 @@ uint16_t CMRIBoard::numberOfOutputBytes() const
   uint8_t numOutputBits = numberOfOutputBits();
   return (numOutputBits / 8) + ((numOutputBits % 8) != 0);
 }
+
+/*
+ * Error handling
+ */
+void CMRIBoard::protocolError()
+{
+  if (mErrorHandler != NULL) {
+    mErrorHandler(PROTOCOL_ERROR, this);
+  }
+}
+
+void CMRIBoard::initError()
+{
+  if (mErrorHandler != NULL) {
+    mErrorHandler(INIT_ERROR, this);
+  }
+}
+
+void CMRIBoard::wrongTypeError()
+{
+  if (mErrorHandler != NULL) {
+    mErrorHandler(WRONG_TYPE, this);
+  }
+}
